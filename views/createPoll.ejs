@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Create New Poll</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 my-5">
+                <div class="card card-body">
+                    <h4>Create A New Poll</h4>
+                    <form action="/create" method="POST">
+                        <div class="form-group">
+                            <label for="title">Enter Title</label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Enter Description</label>
+                            <textarea name="description" id="description" class="form-control"></textarea>
+                        </div>
+                        <div id="options">
+                            <p>Enter Your Options</p>
+                            <div class="form-group">
+                                <input type="text" name="options" class="form-control" placeholder="Option 1">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="options" class="form-control" placeholder="Option 2">
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="addOption">
+                            Add More Option
+                        </button>
+                        <br><br>
+                        <input type="submit" class="btn btn-primary" value="Create Poll">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+
+    <script>
+        let options = document.getElementById('options')
+        let addOption = document.getElementById('addOption')
+        let currentOptionNumber = 3
+        addOption.addEventListener('click', function (e) {
+            e.preventDefault()
+            let option = createNewOption()
+            options.appendChild(option)
+        })
+        function createNewOption() {
+            let div = document.createElement('div')
+            div.className = 'form-group'
+            let input = document.createElement('input')
+            input.type = 'text'
+            input.name = 'options'
+            input.placeholder = 'Option ' + currentOptionNumber++
+            input.className = 'form-control'
+            div.appendChild(input)
+            return div
+        }
+    </script>
+</body>
+
+</html>
